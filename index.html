@@ -15,7 +15,7 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(item, index) in sites" :key="index">{{item.name}}</li>
+            <li v-for="(item, key, index) in object" :key="index">{{index}}:{{item}}:{{key}}</li>
         </ul>
     </div>
     <script>
@@ -28,7 +28,12 @@
                     { name: 'Runoob' },
                     { name: 'Google' },
                     { name: 'Taobao' }
-                    ]
+                    ],
+                object: {
+                    name: '菜鸟教程',
+                    url: 'http://www.runoob.com',
+                    slogan: '学的不仅是技术，更是梦想！'
+                }
             },
             filters: {
                 capitalize(value) {
