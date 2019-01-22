@@ -14,20 +14,21 @@
 </head>
 <body>
     <div id="app">
-        {{message}}
-        <button @click="rev" >reverse</button>
+        {{message | capitalize}}
     </div>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                message: 'Hello world'
+                message: 'kjashdkash'
             },
-            methods: {
-                rev() {
-                    this.message = this.message.split('').reverse().join('')
+            filters: {
+                capitalize(value) {
+                    if(!value) return '';
+                    vaule = value.toString();
+                    return value.charAt(0).toUpperCase() + value.slice(1)
                 }
-            },
+            }
         })
     </script>
 </body>
