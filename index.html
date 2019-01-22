@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="./vue.min.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <style>
         .class1{
             color: #f00;
@@ -14,35 +15,25 @@
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="(item, key, index) in object" :key="index">{{index}}:{{item}}:{{key}}</li>
-        </ul>
+        <router-link to="/bar">go to bar</router-link>
+        <router-link to="/foo">go to foo</router-link>
     </div>
     <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                ok: false,
-                message: 'kjashdkash',
-                sites: [
-                    { name: 'Runoob' },
-                    { name: 'Google' },
-                    { name: 'Taobao' }
-                    ],
-                object: {
-                    name: '菜鸟教程',
-                    url: 'http://www.runoob.com',
-                    slogan: '学的不仅是技术，更是梦想！'
-                }
-            },
-            filters: {
-                capitalize(value) {
-                    if(!value) return '';
-                    vaule = value.toString();
-                    return value.charAt(0).toUpperCase() + value.slice(1)
-                }
-            }
+        const Bar = { template: '<div>bar</div>'}
+        const Foo = { template: '<div>Foo</div>'}
+
+        const routes = [
+            { path: '/bar', component: Bar},
+            { path: '/foo', component: Foo}
+        ]
+
+        const router = new VueRouter({
+            routes
         })
+
+        const app = new Vue({
+            router
+        }).$mount('#app')
     </script>
 </body>
 </html>
