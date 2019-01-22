@@ -14,13 +14,21 @@
 </head>
 <body>
     <div id="app">
-        {{message | capitalize}}
+        <ul>
+            <li v-for="(item, index) in sites" :key="index">{{item.name}}</li>
+        </ul>
     </div>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                message: 'kjashdkash'
+                ok: false,
+                message: 'kjashdkash',
+                sites: [
+                    { name: 'Runoob' },
+                    { name: 'Google' },
+                    { name: 'Taobao' }
+                    ]
             },
             filters: {
                 capitalize(value) {
